@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Blocks</title>
+    <link href="{% static 'SportsTube/css/SportsTube.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="one">
+        {% block bl %}
+
+        {% endblock %}
+    </div>
+    <div class="two">
+        {% block bll %}
+
+        {% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="Images/admin_logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./Style.css">
+    <title>Admin Control</title>
+  </head>
+  <body>
+    <div id="header">
+      <center>
+        <img src="Images/admin_logo.png" width="150" height="150">
+        <h1>Welcome to Admin Control Page</h1>
+      </center>
+    </div>
+    <div id="sidemenu" center>
+         <ul>
+            <center><li><a href="add.php" target="_blank">Add New Video</a></li></center>
+          	<center><li><a href="delete.php" target="_blank">Delete Existing Video</a></li></center>
+         </ul>
+    </div>
+      <!--
+        <div id="data">
+        <br>
+        <center><h1>Existing Videos</h1></center>
+        <?php
+        include 'connection.php';
+    	  //add error_reporting(0); to remove errors
+    	  $sql = "SELECT * FROM data";
+    	  $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) > 0) {
+        while($row = mysqli_fetch_assoc($result)) {
+        echo "<h4>ID: </h4>" . $row["id"]. "<br>" . "  Name: " . $row["name"].  " <br> " .  "Email: " . $row["email"] .  "<br>" . "Password: " . $row["pass"]. "<br><br><br>";
+      	 }
+         } else {
+          echo "<h3><center>No user data found!<center></h3>";
+        }
+        ?>
+      </div>
+      Embed video to HTML Document
+      <video src="videofile.mp4" type="video/mp4" width="" height="" controls></video>
+    -->
+  </body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+        <meta charset="utf-8">
+        <title>Sports Tube</title>
+        <link rel="icon" href="{% static 'SportsTube/images/football.png' %}" type="image/x-icon" />
+        <link rel="stylesheet" href="{% static 'SportsTube/css/bootstrap.min.css' %}" type="text/css" >
+		<script src="{% static 'SportsTube/js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'SportsTube/js/jquery-3.3.1.min.js' %}"></script>
+        <style>
+            *
+            {
+              box-sizing: border-box;
+            }
+            body
+            {
+                color: white;
+                margin:0;
+                height: 80%;
+            }
+            .all
+            {
+              min-height: 100vh;
+              display: -ms-flexbox;
+              -ms-flex-pack: center;
+                  justify-content: center;
+              -ms-flex-align: center;
+                  align-items: center;
+                background: url("{% static 'SportsTube/images/bgu.png' %}") fixed;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+              font-family: 'Poppins', sans-serif;
+              padding: 15px;
+              color: white;
+            }
+            .main .upload_form_cont label
+            {
+                color: white;
+            }
+            .upload_form_cont {
+                margin:0 auto;
+                color:#000;
+                overflow:hidden;
+                width:80%;
+                margin-top:10px;
+            }
+            #upload_form {
+                float:left;
+                padding:20px;
+                width:700px;
+            }
+            #preview {
+                background-color:#fff;
+                display:block;
+                float:right;
+                width:200px;
+            }
+            #upload_form > div {
+                margin-bottom:10px;
+            }
+            #speed,#remaining {
+                float:left;
+                width:100px;
+            }
+            #b_transfered {
+                float:right;
+                text-align:right;
+            }
+            .clear_both {
+                clear:both;
+            }
+            input {
+                border-radius:10px;
+                -moz-border-radius:10px;
+                -ms-border-radius:10px;
+                -o-border-radius:10px;
+                -webkit-border-radius:10px;
+                border:1px solid #ccc;
+                font-size:14pt;
+                padding:5px 10px;
+                width:200px;
+            }
+            input[type=button] {
+                background: -moz-linear-gradient(#ffffff, #dfdfdf);
+                background: -ms-linear-gradient(#ffffff, #dfdfdf);
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #dfdfdf));
+                background: -webkit-linear-gradient(#ffffff, #dfdfdf);
+                background: -o-linear-gradient(#ffffff, #dfdfdf);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dfdfdf');
+                -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dfdfdf')";
+                background: linear-gradient(#ffffff, #dfdfdf);
+            }
+            input[type=button]:hover
+            {
+                cursor:pointer;
+            }
+            input[type=button]:focus
+            {
+                outline: 0;
+                box-shadow: none;
+            }
+            #image_file {
+                width:600px;
+            }
+            #progress_info {
+                font-size:10pt;
+            }
+            #fileinfo,#error,#error2,#abort,#warnsize {
+                color:#aaa;
+                display:none;
+                font-size:10pt;
+                font-style:italic;
+                margin-top:10px;
+            }
+            #progress {
+                border:1px solid #ccc;
+                display:none;
+                float:left;
+                height:14px;
+                border-radius:10px;
+                -moz-border-radius:10px;
+                -ms-border-radius:10px;
+                -o-border-radius:10px;
+                -webkit-border-radius:10px;
+            }
+            #progress_percent {
+                float:right;
+            }
+            #upload_response {
+                margin-top: 10px;
+                padding: 20px;
+                overflow: hidden;
+                display: none;
+                border: 1px solid #ccc;
+                border-radius:10px;
+                -moz-border-radius:10px;
+                -ms-border-radius:10px;
+                -o-border-radius:10px;
+                -webkit-border-radius:10px;
+                box-shadow: 0 0 5px #ccc;
+                }
+        </style>
+</head>
+<body>
+    <div class="all">
+        <div class="head">
+            <center><img src="{% static 'SportsTube/images/icon2.png' %} " width="300" height="300"></center>
+        </div>
+        <div class="main" style="margin-left:200px;">
+                <div class="upload_form_cont">
+                    <form id="upload_form" name="upload_form" action="{% url 'inew' %}" enctype="multipart/form-data" method="post">
+                        {% csrf_token %}
+                        <div>
+                            <div><center><label for="image_file"><h5>Please select image would you find related videos to it : </h5></label></center></div>
+                            <center><div><input type="file" name="image_file" id="image_file" accept="image/*"/></div></center>
+                        </div>
+                        <div>
+                        <center>
+                            <button type="submit" id="button" class="one btn btn-dark btn-outline-success btn-lg">
+                                Search Now
+                            </button>
+                            <button class="two btn btn-primary btn-lg" type="button" style="display: none;" disabled>
+                              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                              Loading...
+                            </button>
+                        </center>
+                        </div>
+                    </form>
+                    <img id="preview" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script type="text/javascript">
+        $(function() {
+            $( "#button" ).click(function() {
+                $( ".one" ).toggle();
+                $( ".two" ).toggle();
+            });
+        });
+    </script>
+	<script>
+		function DisplayFilePath(){
+			alert($("#image_file").val())
+		}
+	</script>
+	<script src="../static/SportsTube/js/image.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+</body>
+</html>

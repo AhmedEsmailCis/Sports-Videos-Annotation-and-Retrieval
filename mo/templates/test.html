@@ -1,0 +1,32 @@
+{% extends 'block.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Django</title>
+    <link href="{% static 'SportsTube/css/SportsTube.css' %}" rel="stylesheet">
+    <link rel="icon" href="{% static 'SportsTube/images/logo_2.png' %}">
+</head>
+<body>
+    {% block bl %}
+    <img src="{% static 'SportsTube/images/logo_2.png' %}" width="200" height="200"> <br>
+    python
+    <br> <br>
+    <a href="/b/mo/2019">Normal</a> <br>
+    <a href="{% url 'a' %}">Blank</a> <br>
+    <a href="{% url 'b' 0 22 %}">Parameter</a> <br>
+    <br>
+    First Name : {{ fn }} <br> Last Name : {{ ln }} <br> Age : {{ age }} <br> <br>
+    {% for s in l %}
+        {{ s }}
+        <br>
+    {% endfor %}
+    {% endblock %}
+
+    {% block bll %}
+        Python is interesting
+        {% include 'include.html' %}
+    {% endblock %}
+</body>
+</html>

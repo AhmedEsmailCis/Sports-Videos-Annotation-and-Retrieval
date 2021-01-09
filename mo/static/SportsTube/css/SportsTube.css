@@ -1,0 +1,20 @@
+/*
+body{
+    background : blue;
+    / background-image: url("../images/logo.jpg");
+    color: white;
+}
+a{
+    color: red;
+}
+*/
+.one{
+    color: green;
+    background-color: blue;
+}
+a{
+    color: yellow;
+}
+.two{
+    background-color: red;
+}
